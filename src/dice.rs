@@ -1,5 +1,6 @@
 use rand::Rng;
 
+// the possible faces of a JoA dice
 #[derive(Debug, Clone, Copy)]
 pub enum Face {
   Kill,
@@ -13,6 +14,7 @@ pub enum Face {
   DelayedRally,
 }
 
+// the JoA dices
 pub type Dice = [Face; 6];
 
 pub const BLACK: Dice = [
