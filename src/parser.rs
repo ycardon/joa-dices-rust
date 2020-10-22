@@ -24,20 +24,20 @@ pub fn parse(command: String) -> (Vec<(usize, Dice)>, Vec<(usize, Dice)>, bool) 
       }
     }
   }
-  return (attack, defense, is_defense);
+  (attack, defense, is_defense)
 }
 
 // returns a number or 1
 fn parse_int(n: String) -> usize {
-  return match n.parse::<usize>() {
+  match n.parse::<usize>() {
     Ok(i) => i,
     Err(_) => 1,
-  };
+  }
 }
 
 // return some dice or none
 fn parse_dice(d: char) -> Option<Dice> {
-  return match d {
+  match d {
     'B' => Some(BLACK),
     'R' => Some(RED),
     'Y' => Some(YELLOW),
@@ -45,5 +45,5 @@ fn parse_dice(d: char) -> Option<Dice> {
     'G' => Some(GIGANTIC),
     'D' => Some(DOOM),
     _ => None,
-  };
+  }
 }

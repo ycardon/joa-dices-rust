@@ -74,7 +74,7 @@ pub const DOOM: Dice = [
 // roll 1 dice
 fn roll1(dice: Dice) -> Face {
   let mut rng = rand::thread_rng();
-  return dice[rng.gen_range(0, dice.len())];
+  dice[rng.gen_range(0, dice.len())]
 }
 
 // roll n dices
@@ -83,7 +83,7 @@ fn rolln(n: usize, dice: Dice) -> Vec<Face> {
   for _ in 0..n {
     res.push(roll1(dice));
   }
-  return res;
+  res
 }
 
 // roll a list of dices
@@ -92,5 +92,5 @@ pub fn roll(dices: Vec<(usize, Dice)>) -> Vec<Face> {
   for (n, d) in dices.iter() {
     res.extend(rolln(*n, *d))
   }
-  return res;
+  res
 }
