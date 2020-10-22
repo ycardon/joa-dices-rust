@@ -1,5 +1,6 @@
 use crate::dice::*;
 
+// parse the command line
 pub fn parse(command: String) -> (Vec<(usize, Dice)>, Vec<(usize, Dice)>, bool) {
   let mut attack = vec![];
   let mut defense = vec![];
@@ -26,6 +27,7 @@ pub fn parse(command: String) -> (Vec<(usize, Dice)>, Vec<(usize, Dice)>, bool) 
   return (attack, defense, is_defense);
 }
 
+// returns a number or 1
 fn parse_int(n: String) -> usize {
   return match n.parse::<usize>() {
     Ok(i) => i,
@@ -33,6 +35,7 @@ fn parse_int(n: String) -> usize {
   };
 }
 
+// return some dice or none
 fn parse_dice(d: char) -> Option<Dice> {
   return match d {
     'B' => Some(BLACK),
