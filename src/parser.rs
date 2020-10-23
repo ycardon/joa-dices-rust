@@ -1,9 +1,9 @@
 use crate::dice::*;
 
 // parse the command line
-pub fn parse(command: String) -> (Vec<(usize, Dice)>, Vec<(usize, Dice)>, bool) {
-  let mut attack = vec![];
-  let mut defense = vec![];
+pub fn parse(command: &String) -> (Vec<(usize, Dice)>, Vec<(usize, Dice)>, bool) {
+  let mut attack = Vec::new();
+  let mut defense = Vec::new();
   let mut is_defense = false;
 
   for s in command.split_whitespace() {

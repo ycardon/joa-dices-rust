@@ -1,7 +1,7 @@
 use rand::Rng;
 
 // the possible faces of a JoA dice
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 pub enum Face {
   Kill,
   Disrupt,
@@ -71,6 +71,9 @@ pub const DOOM: Dice = [
   Face::DelayedRally,
 ];
 
+// the result of rolling dices
+pub type Roll = Vec<Face>;
+
 // roll 1 dice
 fn roll1(dice: Dice) -> Face {
   let mut rng = rand::thread_rng();
@@ -78,19 +81,19 @@ fn roll1(dice: Dice) -> Face {
 }
 
 // roll n dices
-fn rolln(n: usize, dice: Dice) -> Vec<Face> {
-  let mut res = vec![];
+fn rolln(n: usize, dice: Dice) -> Roll {
+  let mut ret = Vec::new();
   for _ in 0..n {
-    res.push(roll1(dice));
+    ret.push(roll1(dice));
   }
-  res
+  ret
 }
 
 // roll a list of dices
-pub fn roll(dices: Vec<(usize, Dice)>) -> Vec<Face> {
-  let mut res = vec![];
+pub fn roll(dices: Vec<(usize, Dice)>) -> Roll {
+  let mut ret = Vec::new();
   for (n, d) in dices.iter() {
-    res.extend(rolln(*n, *d))
+    ret.extend(rolln(*n, *d))
   }
-  res
+  ret
 }
