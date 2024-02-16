@@ -77,7 +77,7 @@ pub type Roll = Vec<Face>;
 // roll 1 dice
 fn roll1(dice: Dice) -> Face {
   let mut rng = rand::thread_rng();
-  dice[rng.gen_range(0, dice.len())]
+  dice[rng.gen_range(0..dice.len())]
 }
 
 // roll n dices
